@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #282c35; /* Modo oscuro por defecto */
+            color: #fff;
+            transition: background-color 0.5s, color 0.5s;
+            margin: 0;
+        }
+
+        header {
+            background-color: #1a1e24;
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.5s, padding 0.5s; /* Animación de color de fondo y relleno */
+        }
+
+        header:hover {
+            background-color: #14181f;
+            padding: 30px; /* Ajuste de relleno al pasar el mouse sobre el encabezado */
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2d323c;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            transition: background-color 0.5s; /* Animación de color de fondo del contenedor de botones */
+        }
+
+        .button {
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+            padding: 20px 60px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 0 10px;
+            display: inline-block;
+            overflow: hidden;
+            text-decoration: none; /* Elimina el subrayado de los botones */
+        }
+
+        .button:hover {
+            background-color: #3666b0;
+            transform: scale(1.1);
+        }
+
+        /* Toggle de modo oscuro/claro */
+        .toggle-mode {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            transition: transform 0.3s; /* Animación de escala del botón de modo oscuro/claro */
+        }
+
+        .toggle-mode:hover {
+            transform: scale(1.1);
+        }
+
+        .toggle-mode img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Modo claro */
+        body.light-mode {
+            background-color: #fff;
+            color: #333;
+        }
+
+        body.light-mode header {
+            background-color: #f0f0f0;
+        }
+
+        body.light-mode .button-container {
+            background-color: #e0e0e0;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 15px;
+            color: #fff;
+            background-color: #2d323c;
+            transition: background-color 0.5s, color 0.5s;
+            animation: fade 1s, scale 0.5s; /* Animaciones de desvanecimiento al hacer scroll y escala al cargar la página */
+        }
+
+        .content.light-mode {
+            background-color: #fff;
+            color: #333;
+        }
+
+        h2, h3 {
+            color: #4a90e2;
+            transition: color 0.5s; /* Animación de color de los encabezados */
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        /* Desvanecimiento al hacer scroll */
+        @keyframes fade {
+            from { opacity: 1; }
+            to { opacity: 0.5; }
+        }
+
+        @keyframes scale {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        .content-scroll-fade {
+            animation: fade 1s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toggle-mode" onclick="toggleMode()">
+        <img id="dark-mode-icon" src="/archivos/moon.png" alt="Modo Oscuro">
+        <img id="light-mode-icon" src="/archivos/sun.png" alt="Modo Claro" style="display: none;">
+    </div>
+
+    <header>
+        <h1>Preguntas Frecuentes</h1>
+    </header>
+
+    <nav>
+        <div class="button-container">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="enlaces.html" class="button">Enlaces</a>
+            <a href="status.html" class="button">Status</a>
+            <button class="button">FAQ</button>
+            <a href="mundomonedas.html" class="button">MundoMonedas</a>
+        </div>
+    </nav>
+
+    <div class="content content-scroll-fade">
+        <h2>Preguntas Frecuentes</h2>
+
+        <h3>1. ¿Cómo hosteo un mundo privado y lo comparto con mis amigos?</h3>
+        <p>Primero dirígete al apartado “singleplayer” y después dale a “Create World”, selecciona todo como a ti más te guste y después crea el mundo, una vez dentro deberás darle a la tecla “Esc” y dale a “Open to LAN”, después dale a “Open to LAN (de nuevo)” y se generará un código en el chat. Ahora desde el ordenador de tu amigo deberá darle a "multiplayer" y después a "Direct Connect", después a "Join LAN world" y después introducir el código dado anteriormente en el chat del otro pc.</p>
+
+        <h3>2. ¿Cómo puedo acceder a los enlaces de los juegos?</h3>
+        <p>Para acceder a los enlaces de los juegos, visita la página de <span style="text-decoration: underline;">Enlaces</span>.</p>
+
+        <h3>3. ¿Cuándo será el próximo mantenimiento?</h3>
+        <p>El próximo mantenimiento está programado para el 1 de enero de 2024. Durante este tiempo, algunos servicios pueden verse afectados.</p>
+
+        <!-- Agrega más preguntas y respuestas según sea necesario -->
+
+    </div>
+
+    <script>
+        // Cambiar entre modo claro y oscuro
+        const body = document.body;
+        const darkModeIcon = document.getElementById('dark-mode-icon');
+        const lightModeIcon = document.getElementById('light-mode-icon');
+
+        function toggleMode() {
+            body.classList.toggle('light-mode');
+            darkModeIcon.style.display = body.classList.contains('light-mode') ? 'inline' : 'none';
+            lightModeIcon.style.display = body.classList.contains('light-mode') ? 'none' : 'inline';
+        }
+    </script>
+
+</body>
+</html>
