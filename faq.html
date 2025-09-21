@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FAQ</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0b0b0c; --card:rgba(255,255,255,0.03); --accent-1:#7aa7ff; --accent-2:#6bd3c1; --muted:#aeb6c0;
+    --glass-border:rgba(255,255,255,0.06); --soft-shadow:0 8px 30px rgba(2,6,23,0.6);
+  }
+  body{font-family:Inter, Roboto, system-ui, -apple-system, Arial; background:var(--bg); color:#fff; min-height:100vh; scroll-behavior:smooth}
+  header{padding:36px 20px 6px; display:flex; align-items:center; justify-content:space-between; gap:18px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));display:grid;place-items:center}
+  .brand h1{font-size:1.1rem;margin:0;font-weight:600}
+  nav{display:flex;gap:18px;align-items:center}
+  nav a{color:#e9f0ff;text-decoration:none;font-weight:500;font-size:0.96rem;position:relative;padding:8px 6px}
+  nav a::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:5px;height:2px;width:0;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border-radius:2px;transition:width .28s}
+  nav a:hover::after{width:60%}
+
+  main{display:flex;justify-content:center;padding:48px 20px}
+  .faq-wrap{width:100%;max-width:920px}
+  .faq-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:36px;border-radius:14px;box-shadow:var(--soft-shadow); border:1px solid var(--glass-border); backdrop-filter:blur(8px); transform:translateY(12px); opacity:0; animation:enter .6s ease forwards .12s}
+  @keyframes enter{ to{transform:none;opacity:1} }
+  .faq-card h2{text-align:center;font-size:1.6rem;margin-bottom:18px}
+  .intro{color:var(--muted); text-align:center; margin-bottom:22px}
+
+  /* FAQ items (expandable) */
+  .faq-item{border-top:1px solid rgba(255,255,255,0.03); padding:18px 0; display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center}
+  .faq-item:first-of-type{border-top:none}
+  .question{font-weight:600; color:#eaf2ff}
+  .toggle{cursor:pointer; width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,0.04); display:grid; place-items:center; background:rgba(255,255,255,0.01)}
+  .answer{grid-column:1/-1; margin-top:10px; color:var(--muted); display:none; line-height:1.6}
+  .faq-item.open .answer{display:block}
+  .faq-item.open .toggle svg{transform:rotate(180deg)}
+
+  footer{padding:22px 20px;text-align:center;color:var(--muted);font-size:0.86rem}
+</style>
+</head>
+<body>
+
+<!-- canvas particles same as index (kept minimal, reuse if hosting both pages) -->
+<canvas id="particles" style="position:fixed; inset:0; z-index:0; pointer-events:none"></canvas>
+
+<header>
+  <div class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="3" width="18" height="18" rx="3" fill="white" opacity="0.06"/>
+        <path d="M4 7v10l8 4 8-4V7L12 3 4 7z" fill="white" opacity="0.12"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Preguntas Frecuentes</h1>
+      <p style="margin-top:2px;color:var(--muted);font-size:0.78rem">Respuestas rápidas y recursos</p>
+    </div>
+  </div>
+
+  <nav aria-label="Main">
+    <a href="index.html">Inicio</a>
+    <a href="faq.html" aria-current="page">FAQ</a>
+  </nav>
+</header>
+
+<main>
+  <div class="faq-wrap" role="region" aria-labelledby="faqTitle">
+    <div class="faq-card">
+      <h2 id="faqTitle">FAQ</h2>
+      <p class="intro">Haz clic en una pregunta para ver la respuesta. Si no encuentras lo que buscas, contacta al administrador.</p>
+
+      <div class="faq-item" id="f1">
+        <div>
+          <div class="question">1. ¿Cómo hosteo un mundo privado y lo comparto con mis amigos?</div>
+        </div>
+        <div class="toggle" data-target="f1" aria-label="Mostrar respuesta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#cfe6ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="answer">Ve a “singleplayer” → “Create World”. Crea el mundo, entra y presiona “Esc”. Selecciona “Open to LAN” y copia el código generado en el chat. Tu amigo lo introducirá desde “Multiplayer” → “Direct Connect”.</div>
+      </div>
+
+      <div class="faq-item" id="f2">
+        <div>
+          <div class="question">2. ¿Cómo puedo acceder a los enlaces de los juegos?</div>
+        </div>
+        <div class="toggle" data-target="f2" aria-label="Mostrar respuesta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#cfe6ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="answer">Visita la sección <strong>Enlaces</strong> desde el menú principal. Allí encontrarás descargas y accesos directos a las versiones disponibles.</div>
+      </div>
+
+      <div class="faq-item" id="f3">
+        <div>
+          <div class="question">3. ¿Cuándo será el próximo mantenimiento?</div>
+        </div>
+        <div class="toggle" data-target="f3" aria-label="Mostrar respuesta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#cfe6ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="answer">El próximo mantenimiento está programado para el 1 de enero de 2024. Durante ese periodo, algunos servicios podrían no estar disponibles.</div>
+      </div>
+
+      <!-- contacto rápido -->
+      <div style="margin-top:16px; border-top:1px solid rgba(255,255,255,0.03); padding-top:16px; display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+        <div style="color:var(--muted)">¿No encontraste tu respuesta? <a href="mailto:admin@tusitio.local" style="color:var(--accent-1); text-decoration:none">Contáctanos</a></div>
+        <div style="color:var(--muted); font-size:0.9rem">© <span id="yr2"></span> Centro Minecraft</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer></footer>
+
+<script>
+/* small particles to match index (lighter here) */
+(function(){
+  const canvas = document.getElementById('particles');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w=canvas.width=innerWidth, h=canvas.height=innerHeight;
+  const particles = [];
+  for(let i=0;i<Math.round((w*h)/90000);i++){
+    particles.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.6+0.4, vx:(Math.random()-0.5)*0.2, vy:(Math.random()-0.5)*0.12, a:Math.random()*0.16+0.04});
+  }
+  addEventListener('resize', ()=>{ w=canvas.width=innerWidth; h=canvas.height=innerHeight; particles.length=0; for(let i=0;i< Math.round((w*h)/90000);i++) particles.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.6+0.4, vx:(Math.random()-0.5)*0.2, vy:(Math.random()-0.5)*0.12, a:Math.random()*0.16+0.04}); });
+
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{
+      p.x += p.vx; p.y += p.vy;
+      if(p.x < -10) p.x = w+10; if(p.x> w+10) p.x=-10;
+      if(p.y < -10) p.y = h+10; if(p.y> h+10) p.y=-10;
+      ctx.beginPath(); ctx.fillStyle = 'rgba(170,190,230,'+p.a+')'; ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* FAQ expandible */
+document.querySelectorAll('.toggle').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const id = btn.dataset.target;
+    const wrapper = document.getElementById(id);
+    wrapper.classList.toggle('open');
+  });
+});
+document.getElementById('yr2').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
