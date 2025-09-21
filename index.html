@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    * {box-sizing: border-box; margin: 0; padding: 0;}
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 50px 20px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    nav {
+      background: #161616;
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin: 0 25px;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {color: #8ab4f8;}
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+    }
+    .card {
+      background: #1b1b1b;
+      border-radius: 16px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      max-width: 600px;
+      width: 100%;
+    }
+    .card h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .buttons a {
+      background: #222;
+      padding: 30px 60px;
+      border-radius: 12px;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .buttons a:hover {
+      background: #333;
+      transform: translateY(-3px);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
+      background: #0d0d0d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Home</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+
+  <main>
+    <div class="card">
+      <h2>Selecciona tu versión</h2>
+      <div class="buttons">
+        <a href="mc-1.8.8.html">1.8.8</a>
+        <a href="mc-1.12.2.html">1.12.2</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 - Marblock
+  </footer>
+</body>
+</html>
